@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FarmerMarket_ASP", "FarmerMarket_ASP.csproj", "{379A2017-46FB-4BC0-9AC1-A98383E3BBB3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{379A2017-46FB-4BC0-9AC1-A98383E3BBB3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{379A2017-46FB-4BC0-9AC1-A98383E3BBB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{379A2017-46FB-4BC0-9AC1-A98383E3BBB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{379A2017-46FB-4BC0-9AC1-A98383E3BBB3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9D4E3684-846C-4F3D-B525-7C72D9F3851F}
+	EndGlobalSection
+EndGlobal

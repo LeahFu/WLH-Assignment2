@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\FarmerMarket_ASP.props" />
+</Project>
