@@ -138,5 +138,62 @@ namespace ProductApi.Models
             }
             return response;
         }
+
+        public Response GetProductByName(SqlConnection con, string name)
+        {
+            Response response = new Response();
+            SqlDataAdapter da = new SqlDataAdapter("Select ProductId, ProductName, Amount, Price from Product Where ProductName = '" + name + "'", con);
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            if (dt.Rows.Count > 0)
+            {
+
+                Product product = new Product();
+                product.ProductId = (int)dt.Rows[0]["ProductID"];
+                product.ProductName = (string)dt.Rows[0]["ProductName"];
+                product.Amount = float.Parse(dt.Rows[0]["Amount"].ToString());
+                product.Price = float.Parse(dt.Rows[0]["Price"].ToString());
+
+                response.StatusCode = 200;
+                response.StatusMessage = "Data Found";
+                response.product = product;
+            }
+
+            else
+            {
+                response.StatusCode = 100;
+                response.StatusMessage = "No Data Found";
+                response.listProduct = null;
+            }
+            return response;
+        }
+
+        public Response ComfirmProduct(SqlConnection con, List<Product> productList)
+        {
+            string updateSqls = new string("");
+            for (int i = 0; i < productList.Count; i++)
+            {
+                updateSqls = updateSqls + "update product set Amount = Amount - " + productList[i].Amount + "where ProductName = '" + productList[i].ProductName + "'; ";
+            }
+
+            Response response = new Response();
+            SqlCommand cmd = new SqlCommand(updateSqls, con);
+            con.Open();
+            int count = cmd.ExecuteNonQuery();
+            con.Close();
+            if (count > 0)
+            {
+                response.StatusCode = 200;
+                response.StatusMessage = "Checkout Successful";
+            }
+
+            else
+            {
+                response.StatusCode = 100;
+                response.StatusMessage = "Checkout Fail";
+
+            }
+            return response;
+        }
     }
 }

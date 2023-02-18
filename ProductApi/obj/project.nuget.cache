@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8V4tfIU02N6L1YuC5M99zOzF8Lg/SGdPruSYL7ncgBJUdORxw4qtNxOvegw9NrOPDLa7Qbf7EddXF5DRBvbofw==",
+  "dgSpecHash": "u7UVnp2z9Q1jyto0EV/NyjqZ0OeVhMKl6TD/zzXNVEQJ1WvZF5yrcOLUSaVQyCFa3J78T0ifcjj6ZNjNpAQqXg==",
   "success": true,
-  "projectFilePath": "D:\\vanier\\block4\\Application Development\\02-Assignment\\Assignment2\\ProductApi\\ProductApi.csproj",
+  "projectFilePath": "D:\\vanier\\block4\\Application Development\\02-Assignment\\Assignment2\\GithubAss2\\WLH-Assignment2\\ProductApi\\ProductApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zhang\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
     "C:\\Users\\zhang\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",

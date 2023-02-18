@@ -18,130 +18,135 @@ using System.Collections;
 using Newtonsoft.Json;
 using ProductApi.Models;
 using System.Net.Http;
+using System.Net.Http.Json;
 
 namespace FarmersShopApp
 {
     public partial class Sales : Window
     {
-        SqlConnection con;
-        public static HttpClient client=new HttpClient();
-        public ArrayList productNames { get; set; }
-        public string updateSqls { get; set; }
-        public double totalAll { get; set; }
+        HttpClient client = new HttpClient();
+        public string[] productNames { get; set; }
+        public float totalAll { get; set; }
+        public List<Product> productList = new List<Product>();
 
         public Sales()
         {
+            client.BaseAddress = new Uri("https://localhost:7282/api/Product");
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(
+                new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json")
+                );
             InitializeComponent();
 
-            productNames = GetProductDataAsync().Result;
+            GetProductList();
             DataContext = this;
         }
 
-        private async Task<ArrayList> GetProductDataAsync()
-        {           
+        private async void GetProductList()
+        {
             HttpResponseMessage responseMessage = await client.GetAsync("https://localhost:7282/api/Product/GetAllProduct");
             responseMessage.EnsureSuccessStatusCode();
             string response = await responseMessage.Content.ReadAsStringAsync();
             Response res = JsonConvert.DeserializeObject<Response>(response);
 
-            List<Product> products = res.listProduct;
+            productList = res.listProduct;
 
-            ArrayList productNameList = new ArrayList();
-
-            foreach (Product product in products)
+            productNames = new string[productList.Count];
+            for (int i = 0; i < productList.Count; i++)
             {
-                productNameList.Add(product.ProductName);
+                productNames[i] = productList[i].ProductName;
             }
-            return productNameList;
 
-            //string[] productNames = new string[productNameList.Count];
-
-            //for (int i = 0; i < productNameList.Count; i++)
-            //{
-            //    productNames[i] = (string)productNameList[i];
-
-            //}
-
-            ////con.Close();
-            //return productNames;
         }
 
-        private void Add_Click(object sender, RoutedEventArgs e)
+        private async void GetProductByName()
         {
             if (this.productComboBox.SelectedIndex == -1)
             {
-                MessageBox.Show("please select product what you want.");
+                MessageBox.Show("choose product.");
                 return;
             }
             if (this.AmountTextBox.Text.Length == 0)
             {
-                MessageBox.Show("please input the amount what you need.");
+                MessageBox.Show("input quantity");
                 return;
             }
 
             string productName = (string)productComboBox.SelectedItem;
-            double amount = Convert.ToDouble(this.AmountTextBox.Text);
-            double price = 0;
-            double total = 0;
-
-            con.Open();
-            string querySql = "select ProductName, Amount, Price from Product where ProductName=@ProductName";
-            SqlCommand cmd = new SqlCommand(querySql, con);
-            cmd.Parameters.AddWithValue("@ProductName", productName);
-            SqlDataReader sqlDataReader = cmd.ExecuteReader();
-
-            double amountInventory = 0;
-            while (sqlDataReader.Read())
+            float amount = float.Parse(this.AmountTextBox.Text);
+            float totalAmount = amount;
+            for (int i = 0; i < productList.Count; i++)
             {
-                amountInventory = Convert.ToDouble(sqlDataReader.GetValue(1).ToString());
-                price = Convert.ToDouble(sqlDataReader.GetValue(2).ToString());
+                if (productList[i].ProductName.Equals(productName))
+                {
+                    totalAmount = totalAmount + productList[i].Amount;
+                }
             }
+            
+            HttpResponseMessage responseMessage = await client.GetAsync("https://localhost:7282/api/Product/GetProductByName/" + productName);
+            responseMessage.EnsureSuccessStatusCode();
+            string response = await responseMessage.Content.ReadAsStringAsync();
+            Response res = JsonConvert.DeserializeObject<Response>(response);
+            Product product = res.product;            
 
-            if (amount > amountInventory)
+            float amountInventory = product.Amount;
+            float price = product.Price;
+
+
+            if (totalAmount > amountInventory)
             {
-                MessageBox.Show("this product is out of stock, please reduce the amount.");
-                con.Close();
+                MessageBox.Show("Stock is out, please re-enter amount.");
                 return;
             }
 
-            updateSqls = updateSqls + "update Product set Amount = Amount - " + this.AmountTextBox.Text + "where ProductName = '" + this.productComboBox.SelectedItem + "'; ";
-            total = Math.Round(amount * price, 2);
-            if (this.BillTextBox.Text.Length == 0)
+            product.Amount = amount;
+
+            productList.Add(product);
+
+            float total = 0;
+            total = amount * price;
+            if (this.ProductTextBox.Text.Length == 0)
             {
-                this.BillTextBox.Text = productName + "   " + amount.ToString() + "     $" + total.ToString() + "\n";
-                totalAll = Math.Round(totalAll + total, 2);
-                this.BillTextBox.Text = this.BillTextBox.Text + "Total price: " + totalAll;
+                this.ProductTextBox.Text = productName + "   " + amount.ToString() + "      $" + total.ToString() + "\n";
+                totalAll = totalAll + total;
+                this.ProductTextBox.Text = this.ProductTextBox.Text + "Total price: " + totalAll;
             }
             else
             {
-                string tempStr = this.BillTextBox.Text;
+                string tempStr = this.ProductTextBox.Text;
 
                 tempStr = tempStr.Substring(0, tempStr.Length - (tempStr.Length - tempStr.LastIndexOf("\n")));
                 tempStr = tempStr + "\n";
-                tempStr = tempStr + productName + "    " + amount.ToString() + "    $" + total.ToString() + "\n";
-                totalAll += total;
+                tempStr = tempStr + productName + "   " + amount.ToString() + "      $" + total.ToString() + "\n";
+                totalAll = totalAll + total;
 
-                this.BillTextBox.Text = tempStr + "total price: " + "$" + totalAll;
+                this.ProductTextBox.Text = tempStr + "total price: " + totalAll;
 
             }
             this.productComboBox.SelectedIndex = -1;
             this.AmountTextBox.Text = "";
-
-            con.Close();
         }
 
-        private void CheckOut_Click(object sender, RoutedEventArgs e)
+        private void Add_Click(object sender, RoutedEventArgs e)
         {
-            con.Open();
-            SqlCommand cmd = new SqlCommand(updateSqls, con);
-            SqlDataReader sqlDataReader = cmd.ExecuteReader();
+            GetProductByName();
+        }
 
-            updateSqls = "";
+        private async void ComfirmProduct()
+        {
+            HttpResponseMessage response = await client.PutAsJsonAsync<List<Product>>("CheckoutProduct/", productList);
+
+            productList.Clear();
             totalAll = 0;
 
-            MessageBox.Show(this.BillTextBox.Text);
-            this.BillTextBox.Clear();
-            con.Close();
+            MessageBox.Show(this.ProductTextBox.Text);
+            this.ProductTextBox.Clear();
+        }
+        private void Comfirm_Click(object sender, RoutedEventArgs e)
+        {
+
+            ComfirmProduct();
+
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)

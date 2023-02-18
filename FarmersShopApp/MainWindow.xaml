@@ -8,7 +8,7 @@
         Title="Admin" Height="450" Width="800">
     <Grid>
         <Label Content="Farmer's Shop Product" HorizontalAlignment="Center" Margin="0,21,0,0" VerticalAlignment="Top" Width="239" FontSize="18" FontWeight="Bold" FontFamily="Arial Black"/>
-        <DataGrid x:Name="dataGrid"  Margin="0,68,0,197" GridLinesVisibility="None" BorderBrush="#FF49A3DC" SelectionChanged="dataGrid_SelectionChanged" HorizontalAlignment="Center" Width="330" >
+        <DataGrid x:Name="dataGrid"  Margin="0,68,0,197" GridLinesVisibility="None" BorderBrush="#FF49A3DC"  HorizontalAlignment="Center" Width="330" >
         </DataGrid>
         <Button x:Name="Search" Content="Search" HorizontalAlignment="Left" Margin="133,325,0,0" VerticalAlignment="Top" FontSize="16" Width="85" FontFamily="Arial" Click="Search_Click"/>
         <Button x:Name="Insert" Content="Insert" HorizontalAlignment="Left" Margin="250,325,0,0" VerticalAlignment="Top" FontSize="16" Width="85" FontFamily="Arial" Click="Insert_Click"/>

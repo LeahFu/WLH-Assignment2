@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\vanier\\block4\\Application Development\\02-Assignment\\Assignment2\\ProductApi\\ProductApi.csproj": {}
+    "D:\\vanier\\block4\\Application Development\\02-Assignment\\Assignment2\\GithubAss2\\WLH-Assignment2\\ProductApi\\ProductApi.csproj": {}
   },
   "projects": {
-    "D:\\vanier\\block4\\Application Development\\02-Assignment\\Assignment2\\ProductApi\\ProductApi.csproj": {
+    "D:\\vanier\\block4\\Application Development\\02-Assignment\\Assignment2\\GithubAss2\\WLH-Assignment2\\ProductApi\\ProductApi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\vanier\\block4\\Application Development\\02-Assignment\\Assignment2\\ProductApi\\ProductApi.csproj",
+        "projectUniqueName": "D:\\vanier\\block4\\Application Development\\02-Assignment\\Assignment2\\GithubAss2\\WLH-Assignment2\\ProductApi\\ProductApi.csproj",
         "projectName": "ProductApi",
-        "projectPath": "D:\\vanier\\block4\\Application Development\\02-Assignment\\Assignment2\\ProductApi\\ProductApi.csproj",
+        "projectPath": "D:\\vanier\\block4\\Application Development\\02-Assignment\\Assignment2\\GithubAss2\\WLH-Assignment2\\ProductApi\\ProductApi.csproj",
         "packagesPath": "C:\\Users\\zhang\\.nuget\\packages\\",
-        "outputPath": "D:\\vanier\\block4\\Application Development\\02-Assignment\\Assignment2\\ProductApi\\obj\\",
+        "outputPath": "D:\\vanier\\block4\\Application Development\\02-Assignment\\Assignment2\\GithubAss2\\WLH-Assignment2\\ProductApi\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

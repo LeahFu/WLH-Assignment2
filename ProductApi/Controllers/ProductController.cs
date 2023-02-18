@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProductApi.Models;
 using System.Data.SqlClient;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ProductApi.Controllers
 {
@@ -68,6 +69,28 @@ namespace ProductApi.Controllers
             Response response = new Response();
             Applications apl = new Applications();
             response = apl.DeleteProductById(con, id);
+            return response;
+        }
+
+        [HttpGet]
+        [Route("GetProductByName/{name}")]
+        public Response GetProductByName(string name)
+        {
+            SqlConnection con = new SqlConnection(_configuration.GetConnectionString("ProductCon").ToString());
+            Response response = new Response();
+            Applications apl = new Applications();
+            response = apl.GetProductByName(con, name);
+            return response;
+        }
+
+        [HttpPut]
+        [Route("ComfirmProduct")]
+        public Response ComfirmProduct(List<Product> productList)
+        {
+            SqlConnection con = new SqlConnection(_configuration.GetConnectionString("ProductCon").ToString());
+            Response response = new Response();
+            Applications apl = new Applications();
+            response = apl.ComfirmProduct(con, productList);
             return response;
         }
     }

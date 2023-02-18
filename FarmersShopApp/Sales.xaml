@@ -10,11 +10,20 @@
         <ComboBox x:Name="productComboBox" HorizontalAlignment="Left" Height="24" Margin="145,71,0,0" VerticalAlignment="Top" Width="210" ItemsSource="{Binding productNames}"/>
         <Label Content="Product : " HorizontalAlignment="Left" Height="32" Margin="67,67,0,0" VerticalAlignment="Top" Width="78" FontSize="14"/>
         <Label Content="Amount(kg) :" HorizontalAlignment="Left" Height="32" Margin="69,143,0,0" VerticalAlignment="Top" Width="97" FontSize="14"/>
-        <TextBox x:Name="AmountTextBox" HorizontalAlignment="Left" Height="31" Margin="171,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" RenderTransformOrigin="-0.413,0.623" FontSize="14"/>
-        <TextBox x:Name="BillTextBox" HorizontalAlignment="Left" Height="274" Margin="452,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" IsEnabled="False" FontSize="14"/>
-        <Button x:Name="CheckOut" Content="Comfirm" HorizontalAlignment="Left" Height="32" Margin="94,240,0,0" VerticalAlignment="Top" Width="102" Click="CheckOut_Click" FontSize="14"/>
+        <TextBox x:Name="AmountTextBox" HorizontalAlignment="Left" Height="31" Margin="171,143,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="79" RenderTransformOrigin="-0.413,0.623" FontSize="14">
+            <TextBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleY="1.721"/>
+                    <RotateTransform Angle="-2.098"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </TextBox.RenderTransform>
+        </TextBox>
+        <TextBox x:Name="ProductTextBox" HorizontalAlignment="Left" Height="274" Margin="452,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" IsEnabled="False" FontSize="14"/>
+        <Button x:Name="Comfirm" Content="Comfirm" HorizontalAlignment="Left" Height="32" Margin="94,240,0,0" VerticalAlignment="Top" Width="102" Click="Comfirm_Click" FontSize="14"/>
         <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Height="32" Margin="250,240,0,0" VerticalAlignment="Top" Width="89" Click="Cancel_Click" FontSize="14"/>
-        <Label Content="Order Details" HorizontalAlignment="Left" Height="33" Margin="452,29,0,0" VerticalAlignment="Top" Width="113" FontSize="16"/>
+        <Label Content="Product list:" HorizontalAlignment="Left" Height="33" Margin="452,29,0,0" VerticalAlignment="Top" Width="113" FontSize="16"/>
         <Button x:Name="Add" Content="Add" HorizontalAlignment="Left" Height="32" Margin="277,142,0,0" VerticalAlignment="Top" Width="78" Click="Add_Click"/>
     </Grid>
 </Window>

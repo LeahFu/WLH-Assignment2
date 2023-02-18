@@ -158,24 +158,25 @@ namespace FarmersShopApp
 
         }
 
-        private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            try
-            {
-                if (dataGrid.Items.Count > 0)
-                {
-                    ProductID.Text = ((DataRowView)dataGrid.SelectedItem).Row["ProductID"].ToString();
-                    ProductName.Text = ((DataRowView)dataGrid.SelectedItem).Row["Productname"].ToString();
-                    Amount.Text = ((DataRowView)dataGrid.SelectedItem).Row["Amount"].ToString();
-                    Price.Text = ((DataRowView)dataGrid.SelectedItem).Row["Price"].ToString();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+        //SelectionChanged="dataGrid_SelectionChanged"
+        //private void dataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (dataGrid.Items.Count > 0)
+        //        {
+        //            ProductID.Text = ((DataRowView)dataGrid.SelectedItem).Row["ProductID"].ToString();
+        //            ProductName.Text = ((DataRowView)dataGrid.SelectedItem).Row["Productname"].ToString();
+        //            Amount.Text = ((DataRowView)dataGrid.SelectedItem).Row["Amount"].ToString();
+        //            Price.Text = ((DataRowView)dataGrid.SelectedItem).Row["Price"].ToString();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
 
-        }
+        //}
 
         public void clearData()
         {
