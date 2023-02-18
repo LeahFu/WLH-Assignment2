@@ -689,11 +689,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chall\\source\\repos\\Lab5_Assignment2\\FarmerMarket_ASP\\FarmerMarket_ASP.csproj",
+      "projectUniqueName": "C:\\Users\\chall\\source\\repos\\WLH-Assignment2\\FarmerMarket_ASP\\FarmerMarket_ASP.csproj",
       "projectName": "FarmerMarket_ASP",
-      "projectPath": "C:\\Users\\chall\\source\\repos\\Lab5_Assignment2\\FarmerMarket_ASP\\FarmerMarket_ASP.csproj",
+      "projectPath": "C:\\Users\\chall\\source\\repos\\WLH-Assignment2\\FarmerMarket_ASP\\FarmerMarket_ASP.csproj",
       "packagesPath": "C:\\Users\\chall\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chall\\source\\repos\\Lab5_Assignment2\\FarmerMarket_ASP\\obj\\",
+      "outputPath": "C:\\Users\\chall\\source\\repos\\WLH-Assignment2\\FarmerMarket_ASP\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -7,6 +7,16 @@
         mc:Ignorable="d"
         Title="Sales" Height="450" Width="800">
     <Grid>
-        
+        <DataGrid x:Name="dataGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,376,217"/>
+        <Label x:Name="Product" Content="Product:" HorizontalAlignment="Left" Margin="472,25,0,0" VerticalAlignment="Top" Width="72"/>
+        <ComboBox x:Name="productComboBox" HorizontalAlignment="Left" Margin="579,29,0,0" VerticalAlignment="Top" Width="120" ItemsSource="{Binding productNames}"/>
+        <Label x:Name="Amount" Content="Amount(kg):" HorizontalAlignment="Left" Margin="472,88,0,0" VerticalAlignment="Top" Width="81"/>
+        <TextBox HorizontalAlignment="Left" Margin="579,88,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120" Height="26"/>
+        <Button x:Name="Add" Content="Add" HorizontalAlignment="Left" Margin="480,165,0,0" VerticalAlignment="Top" Width="66" Height="33"/>
+        <Button x:Name="Comfirm" Content="Comfirm" HorizontalAlignment="Left" Margin="480,242,0,0" VerticalAlignment="Top" Width="66" Height="40"/>
+        <Button x:Name="Cancel" Content="Cancel" HorizontalAlignment="Left" Margin="619,242,0,0" VerticalAlignment="Top" Width="63" Height="40"/>
+        <Button x:Name="Connection_Refresh" Content="Connection/Refresh" HorizontalAlignment="Left" Margin="135,276,0,0" VerticalAlignment="Top" Width="173" Height="38" Click="Connection_Refresh_Click"/>
+        <Button x:Name="MainWindow" Content="MainWindow" HorizontalAlignment="Left" Margin="135,360,0,0" VerticalAlignment="Top" Width="173" Height="37" Click="MainWindow_Click"/>
+
     </Grid>
 </Window>

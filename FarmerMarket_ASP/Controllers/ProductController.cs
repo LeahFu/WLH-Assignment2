@@ -61,8 +61,8 @@ namespace FarmerMarket_ASP.Controllers
         }
 
         [HttpDelete]
-        [Route("DeleteStudent/{id}")]
-        public Response DeleteStudent(int id)
+        [Route("DeleteProduct/{id}")]
+        public Response DeleteProduct(int id)
         {
             SqlConnection con = new SqlConnection(_configuraion.GetConnectionString("productCon").ToString());
             Response response = new Response();

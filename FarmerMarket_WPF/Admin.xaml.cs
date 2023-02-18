@@ -106,5 +106,12 @@ namespace FarmerMarket_WPF
             Response res = JsonConvert.DeserializeObject<Response>(response);
            // ServerStatus.Content = response.StatusCode.ToString();
         }
+
+        private void MainWindow_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Close();
+        }
     }
 }
